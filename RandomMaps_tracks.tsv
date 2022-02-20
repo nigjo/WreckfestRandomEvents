@@ -1,0 +1,111 @@
+Big Valley Speedway		Open Demolition Arena	speedway2_classic_arena
+		Demolition Arena	speedway2_demolition_arena
+	Figure 8		speedway2_figure_8
+	Inner Oval		speedway2_inner_oval
+	Outer Oval		speedway2_outer_oval
+	Outer Oval Loop		speedway2_oval_loop
+Bleak City	Race Track		crm01_1
+	Race Track reverse		crm01_5
+		Demolition Arena	crm01_3
+		Free Roam	crm01_2
+Bloomfield Speedway	Dirt Oval		dirt_speedway_dirt_oval
+	Figure 8		dirt_speedway_figure_8
+Bonebreaker Valley	Main Circuit		bonebreaker_valley_main_circuit
+Boulder Bank Circuit	Main Route		sandpit3_long_loop
+	Main Route reverse		sandpit3_long_loop_rev
+	Short Route		sandpit3_short_loop
+	Short Route reverse		sandpit3_short_loop_rev
+Clayridge Circuit	Main Circuit		mixed9_r1
+	Main Circuit reverse		mixed9_r1_rev
+Crash Canyon	Main Circuit		crash_canyon_main_circuit            
+Deathloop	Main Circuit		loop
+Devil's Canyon	Race Track		crm02_1
+		Free Roam	crm02_2
+Dirt Devil Stadium	Dirt Speedway		triangle_r1
+		Demolition Arena	triangle_r2
+Drytown Desert	Main Circuit		fields08_1
+	Main Circuit reverse		fields08_1_rev
+Eagles Peak Motorpark	Racing Track		fields13_1
+	Racing Track rev.		fields13_1_rev
+		Demotion Arena	fields13_2
+Espedalen Raceway	Main Circuit		tarmac3_main_circuit
+	Main Circuit reverse		tarmac3_main_circuit_rev
+	Short Circuit		tarmac3_short_circuit
+	Short Circuit reverse		tarmac3_short_circuit_rev
+Fairfield County		Demolition Arena	smallstadium_demolition_arena    
+Fairfield Mudpit		Demolition Arena	mudpit_demolition_arena        
+Fairfield Grass Arena		Demolition Arena	grass_arena_demolition_arena    
+Finncross Circuit	Main Circuit		mixed1_main_circuit
+	Main Circuit reverse		mixed1_main_circuit_rev
+Fire Rock Raceway	Main Circuit		tarmac1_main_circuit
+	Main Circuit reverse		tarmac1_main_circuit_rev
+	Short Circuit		tarmac1_short_circuit
+	Short Circuit reverse		tarmac1_short_circuit_rev
+Firwood Motocenter	Main Circuit		mixed7_r1
+	Main Circuit reverse		mixed7_r1_rev
+	Rally Circuit		mixed7_r2
+	Rally Circuit reverse		mixed7_r2_rev
+	Short Circtuit		mixed7_r3
+	Short Circtuit reverse		mixed7_r3_rev
+Glendale Countryside		Field Arena	field_derby_arena       
+Hellride	Main Circuit		urban06
+Hilltop Stadium	Figure 8		speedway1_figure_8
+	Oval		speedway1_oval
+Hillstreet Circuit	Race Track		urban08_1
+	Race Track reverse		urban08_1_rev
+Kingston Raceway	Asphalt Oval		fields12_1
+	Asphalt Oval reverse		fields12_1_rev
+	Figure 8		fields12_2
+Maasten Motocenter	Main Circuit		mixed2_main_circuit
+	Main Circuit reverse		mixed2_main_circuit_rev
+Madman Stadium		Demolition Arena	bigstadium_demolition_arena
+	Figure 8		bigstadium_figure_8
+The Maw		Demolition Arena	fields11_1
+Midwest Motocenter	Main Circuit		gravel1_main_loop
+	Main Circuit reverse		gravel1_main_loop_rev
+Motorcity Circuit	Main Circuit		tarmac2_main_circuit
+	Main Circuit reverse		tarmac2_main_circuit_rev
+	Trophy Circuit		tarmac2_main_circuit_tourney
+Mudford Motorpark	Mud Oval		fields10_1
+		Mud Pit	fields10_2
+Nothfolk Ring	Main Circuit		mixed8_r1
+	Open Circuit		mixed8_r2
+	Main Route reverse		mixed8_r3_rev
+Northland Raceway	Outer Route		mixed5_outer_loop
+	Outer Route reverse		mixed5_outer_loop_rev
+	Inner Route		mixed5_inner_loop
+	Inner Route reverse		mixed5_inner_loop_rev
+	Free Route		mixed5_free_route
+Pinehills Raceway	Main Circuit		mixed3_long_loop
+	Main Circuit reverse		mixed3_long_loop_rev
+	Short Circuit		mixed3_short_loop
+	Short Circuit reverse		mixed3_short_loop_rev
+	Rally Circuit		mixed3_r3
+	Rally Circuit reverse		mixed3_r3_rev
+Rally Trophy	Special Stage		rt01_1
+Rattlesnake Racepark	Main Circuit		fields14_1
+	Main Circuit reverse		fields14_2
+Rockfield Roughspot	Dirt Oval		fields09_1
+Rosenheim Raceway	Main Circuit		mixed4_main_circuit
+	Main Circuit reverse		mixed4_main_circuit_rev
+Sandstone Raceway	Main Route		sandpit1_long_loop
+	Main Route reverse		sandpit1_long_loop_rev
+	Short Route		sandpit1_short_loop
+	Short Route reverse		sandpit1_short_loop_rev
+	Alt Route		sandpit1_alt_loop
+	Alt Route reverse		sandpit1_alt_loop_rev
+Savolax Sandpit	Main Route		sandpit2_full_circuit
+	Main Route reverse		sandpit2_full_circuit_rev
+	Short Route		sandpit2_2
+	Short Route reverse		sandpit2_2_rev
+Thunderbowl		Demolition Arena	urban07
+Tribend Speedway	Main Circuit		forest12_1
+	Main Circuit reverse		forest12_1_rev
+	Wild Circuit		forest12_2
+Vale Falls	Main Circuit		forest11_1
+	Main Circuit reverse		forest11_1_rev
+	Short Circuit		forest11_2
+	Short Circuit reverse		forest11_2_rev
+Wrecking Playground		Main Area	wrecker01_1
+Wrecknado	Racing Track		urban09_1
+		Demolition Arena	urban09_2
