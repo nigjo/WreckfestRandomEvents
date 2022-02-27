@@ -17,7 +17,7 @@ Boulder Bank Circuit	Main Route		sandpit3_long_loop
 	Short Route reverse		sandpit3_short_loop_rev
 Clayridge Circuit	Main Circuit		mixed9_r1
 	Main Circuit reverse		mixed9_r1_rev
-Crash Canyon	Main Circuit		crash_canyon_main_circuit            
+Crash Canyon	Main Circuit		crash_canyon_main_circuit
 Deathloop	Main Circuit		loop
 Devil's Canyon	Race Track		crm02_1
 		Free Roam	crm02_2
@@ -32,9 +32,9 @@ Espedalen Raceway	Main Circuit		tarmac3_main_circuit
 	Main Circuit reverse		tarmac3_main_circuit_rev
 	Short Circuit		tarmac3_short_circuit
 	Short Circuit reverse		tarmac3_short_circuit_rev
-Fairfield County		Demolition Arena	smallstadium_demolition_arena    
-Fairfield Mudpit		Demolition Arena	mudpit_demolition_arena        
-Fairfield Grass Arena		Demolition Arena	grass_arena_demolition_arena    
+Fairfield County		Demolition Arena	smallstadium_demolition_arena
+Fairfield Mudpit		Demolition Arena	mudpit_demolition_arena
+Fairfield Grass Arena		Demolition Arena	grass_arena_demolition_arena
 Finncross Circuit	Main Circuit		mixed1_main_circuit
 	Main Circuit reverse		mixed1_main_circuit_rev
 Fire Rock Raceway	Main Circuit		tarmac1_main_circuit
@@ -47,7 +47,7 @@ Firwood Motocenter	Main Circuit		mixed7_r1
 	Rally Circuit reverse		mixed7_r2_rev
 	Short Circtuit		mixed7_r3
 	Short Circtuit reverse		mixed7_r3_rev
-Glendale Countryside		Field Arena	field_derby_arena       
+Glendale Countryside		Field Arena	field_derby_arena
 Hellride	Main Circuit		urban06
 Hilltop Stadium	Figure 8		speedway1_figure_8
 	Oval		speedway1_oval
