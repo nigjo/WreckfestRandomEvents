@@ -95,6 +95,9 @@ public class RandomMaps
   private static Properties loadProperties(String filename) throws IOException
   {
     Properties settings = new Properties();
+    settings.setProperty("RandomMaps.teamModeThreshold", "1");
+    settings.setProperty("RandomMaps.deathmatchThreshold", "1");
+
     if(Files.exists(Path.of(filename)))
     {
       try( InputStream in = Files.newInputStream(Path.of(filename)))
@@ -107,17 +110,18 @@ public class RandomMaps
 
   private static final Map<String, String> HELP = Map.of(
       "help", "this help.",
-      "output", "filename of the output config file. Defaults to 'RandomMaps.cfg'.",
-      "base", "filename of the base config file without an event loop."
+      "output", "<filename> of the output config file. Defaults to 'RandomMaps.cfg'.",
+      "base", "<filename> of the base config file without an event loop."
       + " Is copied to the output before the event loop."
       + " Default is 'RandomMaps_base.cfg'",
-      "maps", "Tab separated file with track list."
+      "maps", "<filenam> of a tab separated file with track list."
       + " Default is 'RandomMaps.tsv'.",
-      "settings", "settings file with settings per track."
-      + " Default is 'RandomMaps.properties'"
+      "settings", "<filename> of a file with pre track settings."
+      + " Default is 'RandomMaps.properties'",
+      "echoSettings", "echos the current 'settings' to stdout."
   );
 
-  private static boolean parseArgs(Map<String, String> config, String... args)
+  private static boolean parseArgs(Map<String, Object> config, String... args)
       throws Exception
   {
     config.putIfAbsent("help", "false");
@@ -148,12 +152,17 @@ public class RandomMaps
               System.err.print("--" + optionKey);
               if(HELP.containsKey(optionKey))
               {
-                System.err.print("  ");
+                System.err.print(" ");
                 System.err.print(HELP.get(optionKey));
               }
               System.err.println();
             }
             return false;
+        }
+        if(config.get(option) instanceof Boolean)
+        {
+          config.put(option, true);
+          option = null;
         }
       }
       else
@@ -166,14 +175,20 @@ public class RandomMaps
     return true;
   }
 
-  public static void main(String... args) throws Exception
+  private static Map<String, Object> getConfigDefaults()
   {
-    Map<String, String> config = new HashMap<>();
+    Map<String, Object> config = new HashMap<>();
     config.put("settings", "RandomMaps.properties");
     config.put("maps", "RandomMaps_tracks.tsv");
     config.put("base", "RandomMaps_base.cfg");
     config.put("output", "RandomMaps.cfg");
+    config.put("echoSettings", Boolean.FALSE);
+    return config;
+  }
 
+  public static void main(String... args) throws Exception
+  {
+    Map<String, Object> config = getConfigDefaults();
     if(!parseArgs(config, args))
     {
       return;
@@ -181,24 +196,38 @@ public class RandomMaps
 
     //String filebase = RandomMaps.class.getSimpleName();
     Files.copy(
-        Path.of(config.get("base")),
-        Path.of(config.get("output")),
+        Path.of((String)config.get("base")),
+        Path.of((String)config.get("output")),
         StandardCopyOption.REPLACE_EXISTING
     );
 
-    List<Track> tracks = loadTracks(config.get("maps"));
+    List<Track> tracks = loadTracks((String)config.get("maps"));
     log("Tracks found: %d", tracks.size());
 
     log("Event loop:");
     log("-".repeat(LOG_LINE_LENGTH));
 
-    Map<String, Map<String, String>> tracksettings =
-        createEventLoop(tracks, config.get("settings"), config.get("output"));
+    Properties toolSettings = loadProperties((String)config.get("settings"));
+
+    Map<String, Map<String, String>> tracksettings = createEventLoop(tracks,
+        (String)config.get("output"), toolSettings);
 
     log("-".repeat(LOG_LINE_LENGTH));
-    log("properties:");
-    printToolProperties(tracksettings);
-    log("-".repeat(LOG_LINE_LENGTH));
+    if(Boolean.TRUE.equals(config.get("echoSettings")))
+    {
+      log("echo properties:");
+      String mappedKey = "RandomMaps|base settings|RandomMaps";
+      printToolProperties(Map.of(mappedKey,
+          new TreeSet<>(toolSettings.stringPropertyNames()).stream()
+              .filter(key -> key.startsWith("RandomMaps."))
+              .collect(Collectors.toMap(
+                  key -> key.substring(key.indexOf('.') + 1),
+                  key -> (String)toolSettings.get(key)
+              ))
+      ));
+      printToolProperties(tracksettings);
+      log("-".repeat(LOG_LINE_LENGTH));
+    }
   }
 
   private static List<Track> loadTracks(String tracksfile) throws IOException
@@ -235,17 +264,16 @@ public class RandomMaps
         }
         System.out.println(key + "=" + e.getValue());
       }
+      System.out.println();
     });
   }
 
   private static Map<String, Map<String, String>> createEventLoop(
-      List<Track> tracks, String settingsFile, String outputFile)
+      List<Track> tracks, String outputFile, Properties toolSettings)
       throws IOException
   {
     Properties serverSettings = loadProperties(outputFile);
     serverSettings.putIfAbsent("disabled", "true");
-
-    Properties toolSettings = loadProperties(settingsFile);
 
     Map<String, Map<String, String>> tracksettings = new TreeMap<>();
     Random rnd = new Random(System.currentTimeMillis());
@@ -256,8 +284,8 @@ public class RandomMaps
 
     var lastMaps = new ArrayList<String>();
     String lastKind = null;
-    try( BufferedWriter out = Files.newBufferedWriter(
-        Path.of(outputFile), StandardOpenOption.APPEND))
+    try( BufferedWriter out = Files.newBufferedWriter(Path.of(outputFile),
+        StandardOpenOption.APPEND))
     {
       while(!tracks.isEmpty())
       {

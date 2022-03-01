@@ -27,8 +27,34 @@ own settings keys:
  <dd>Value in full percent of how many "racing"-Tracks are defined as "team race".
      The default value is 1</dd>
  <dt><code>RandomMaps.deathmatchThreshold</code></dt>
- <dd>Value in full percent of how many "derby deathmatch" (="Deathmatch") Tracks are defined as "derby" (="Last man standing").
+ <dd>Value in full percent of how many "derby deathmatch" (="Deathmatch") Tracks
+     are defined as "derby" (="Last man standing").
      The default value is 1</dd>
 </dl>
 
-To remove a track from the event loop you do not need to edit the `RandomMaps_tracks.tsv`. Just add a `<trackid>.disabled=true` to the map configuration file
+To remove a track from the event loop you do not need to edit the
+`RandomMaps_tracks.tsv`. Just add a `<trackid>.disabled=true` to the map
+configuration file.
+
+You can create an initial properties file via
+
+    java RandomMaps.java --echoSettings >RandomMaps.properties
+
+**Caution:** Don't run this command to "update" the file. This command will
+first clean the file before is is read by the tool! But you can redirect to
+another file and rename it afterwards.
+
+
+## CLI Help
+
+```text
+java RandomMaps.java [<options>]
+
+<options>:
+--base <filename> of the base config file without an event loop. Is copied to the output before the event loop. Default is 'RandomMaps_base.cfg'
+--echoSettings echos the current 'settings' to stdout.
+--help this help.
+--maps <filenam> of a tab separated file with track list. Default is 'RandomMaps.tsv'.
+--output <filename> of the output config file. Defaults to 'RandomMaps.cfg'.
+--settings <filename> of a file with pre track settings. Default is 'RandomMaps.properties'
+```
