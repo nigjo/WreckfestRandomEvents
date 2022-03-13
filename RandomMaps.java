@@ -108,19 +108,6 @@ public class RandomMaps
     return settings;
   }
 
-  private static final Map<String, String> HELP = Map.of(
-      "help", "this help.",
-      "output", "<filename> of the output config file. Defaults to 'RandomMaps.cfg'.",
-      "base", "<filename> of the base config file without an event loop."
-      + " Is copied to the output before the event loop."
-      + " Default is 'RandomMaps_base.cfg'",
-      "maps", "<filenam> of a tab separated file with track list."
-      + " Default is 'RandomMaps.tsv'.",
-      "settings", "<filename> of a file with pre track settings."
-      + " Default is 'RandomMaps.properties'",
-      "echoSettings", "echos the current 'settings' to stdout."
-  );
-
   private static boolean parseArgs(Map<String, Object> config, String... args)
       throws Exception
   {
@@ -175,13 +162,26 @@ public class RandomMaps
     return true;
   }
 
+  private static final Map<String, String> HELP = Map.of(
+      "help", "this help.",
+      "output", "<filename> of the output config file. Defaults to 'RandomMaps.cfg'.",
+      "base", "<filename> of the base config file without an event loop."
+      + " Is copied to the output before the event loop."
+      + " Default is 'RandomMaps_base.cfg'",
+      "maps", "<filenam> of a tab separated file with track list."
+      + " Default is 'RandomMaps.tsv'.",
+      "settings", "<filename> of a file with pre track settings."
+      + " Default is 'RandomMaps.properties'",
+      "echoSettings", "echos the current 'settings' to stdout."
+  );
+
   private static Map<String, Object> getConfigDefaults()
   {
     Map<String, Object> config = new HashMap<>();
-    config.put("settings", "RandomMaps.properties");
-    config.put("maps", "RandomMaps_tracks.tsv");
-    config.put("base", "RandomMaps_base.cfg");
     config.put("output", "RandomMaps.cfg");
+    config.put("base", "RandomMaps_base.cfg");
+    config.put("maps", "RandomMaps_tracks.tsv");
+    config.put("settings", "RandomMaps.properties");
     config.put("echoSettings", Boolean.FALSE);
     return config;
   }
@@ -366,15 +366,15 @@ public class RandomMaps
 
         trackdata.remove("disabled");
 
-        for(String key : trackdata.stringPropertyNames())
+        for(Object key : trackdata.keySet())
         {
-          out.append("el_").append(key)
-              .append("=").append(trackdata.getProperty(key));
+          String name = (String)key;
+          out.append("el_").append(name)
+              .append("=").append(trackdata.getProperty(name));
           out.newLine();
         }
 
         addTrackProperties(trackdata, tracksettings, next);
-
         log("-- \"%s\" - %s (%s)",
             next.name, next.kind, trackdata.getProperty("gamemode"));
       }
@@ -383,6 +383,11 @@ public class RandomMaps
     return tracksettings;
   }
 
+  /**
+   * @param next Trackdata
+   * @param settings current global settings
+   * @param trackdata destination settings
+   */
   private static void copyMapdataFromGlobal(Track next, Properties settings,
       Properties trackdata)
   {
